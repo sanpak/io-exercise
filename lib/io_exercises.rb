@@ -32,6 +32,19 @@ def guessing_game
   puts "Number of guess: #{guess_count}"
 end
 
+
+def file_shuffler
+  puts "What is your file name?"
+  file_name = gets.chomp
+  contents = File.readlines(file_name)
+  contents.shuffle
+  contents.each do |line|
+    File.open(file_name+"-shuffled.txt","a") do |f|
+      f.puts line
+    end
+  end
+
+end
   # puts "Guess a number"
   # computer_num = rand(1..100)
   # guess_count = 0
