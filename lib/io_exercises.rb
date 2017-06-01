@@ -24,15 +24,12 @@ def guessing_game
     if human_guess == computer_num
       won = true
     else
-      message = human_guess > computer_num
-      puts "too high" if human_guess > computer_num
-      puts "too low"  if human_guess < computer_num
+      message = human_guess > computer_num ? "too high" : "too low"
+      puts message
     end
   end
-
   puts "You win! Your guess is : #{human_guess}"
   puts "Number of guess: #{guess_count}"
-
 end
 
   # puts "Guess a number"
