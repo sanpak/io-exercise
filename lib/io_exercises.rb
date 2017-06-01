@@ -11,21 +11,60 @@
 #   could create a random number using the Random class, or you could use the
 #   `shuffle` method in array.
 def guessing_game
-  puts "Guess a number"
-  computer_num = rand(100) + 1
   guess_count = 0
-  $stdin.each do |input|
-    puts input
+  won = false
+  computer_num = rand(1..100)
+  human_guess = -1
+
+  while !won
+    puts "Guess a number:"
+    human_guess = gets.chomp.to_i
+    puts human_guess
     guess_count += 1
-    if input.chomp < computer_num.to_s
-      puts "too low"
-    elsif input.chomp > computer_num.to_s
-      puts "too high"
-    end
-    if input.chomp == computer_num.to_s
-      puts computer_num.to_s + ": You win!"
-      puts "Number of guess: #{guess_count}"
-      break
+    if human_guess == computer_num
+      won = true
+    else
+      message = human_guess > computer_num
+      puts "too high" if human_guess > computer_num
+      puts "too low"  if human_guess < computer_num
     end
   end
+
+  puts "You win! Your guess is : #{human_guess}"
+  puts "Number of guess: #{guess_count}"
+
 end
+
+  # puts "Guess a number"
+  # computer_num = rand(1..100)
+  # guess_count = 0
+  # $stdin.each do |input|
+  #   puts input
+  #   guess_count += 1
+  #   if input.chomp < computer_num.to_s
+  #     puts "too low"
+  #   elsif input.chomp > computer_num.to_s
+  #     puts "too high"
+  #   elsif input.chomp == "0"
+  #     raise "no zero"
+  #   end
+  #   if input.chomp == computer_num.to_s
+  #     puts computer_num.to_s + ": You win!"
+  #     puts "Number of guess: #{guess_count}"
+  #     break
+  #   end
+  # end
+
+  # number = rand(1..100); count = 0; won = false
+  #
+  # puts "Welcome to the Guessing name!"
+  # while !won
+  #   puts "Please guess a number: "; guess = gets.chomp.to_i ; count += 1
+  #   if (guess == number) then won = true else
+  #     output = guess > number ? "too high" : "too low"
+  #     print "Your guessed is #{guess}, #{output}.\n\n"
+  #   end
+  # end
+  # puts "You won! the number was #{number} with #{count} guesses."
+#
+# end
